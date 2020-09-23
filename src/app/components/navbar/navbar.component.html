@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/home">PELICULAS-APP-2</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+            </ul>
+
+            <form class="d-flex">
+                <!--Con keyup.enter le digo que si pongo el texto a buscar en el input y presiono enter me hace la busqueda tambien sin pulsar el boton
+                de buscar-->
+                <input #txtBuscar (keyup.enter)="buscarPelicula( txtBuscar.value )" class="form-control mr-sm-2" type="search" placeholder="Buscar pelicula..." aria-label="Search">
+                <button (click)="buscarPelicula( txtBuscar.value )" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+
+        </div>
+
+    </div>
+</nav>

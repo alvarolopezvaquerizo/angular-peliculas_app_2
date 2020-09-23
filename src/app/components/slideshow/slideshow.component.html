@@ -1,0 +1,24 @@
+<div class="swiper-container animate__animated animate__zoomIn">
+
+    <div class="swiper-wrapper">
+
+        <div *ngFor="let movie of movies" class="swiper-slide" [ngStyle]="{
+                'background-size': 'cover',
+                'background-image': 'url(https://image.tmdb.org/t/p/w500' + movie.backdrop_path +')'
+            }">
+            <div class="movie-description">
+                <h3>{{ movie.title }}</h3>
+                <!--Lo paso por la pipe slice:0:130 para que solo me muestre 130 caracteres-->
+                <p>{{ movie.overview | slice:0:130 }}...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+
+    <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next"></div>
+
+</div>

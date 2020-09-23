@@ -1,0 +1,54 @@
+<!--Con *ngIf="pelicula" le digo que me muestre la pelicula si existe-->
+<div class="row animate__animated animate__fadeInDown" *ngIf="pelicula">
+
+    <div class="col-md-6">
+
+        <img [src]="pelicula.poster_path | poster" [alt]="pelicula.title" class="img-thumbnail">
+
+    </div>
+
+    <div class="col-md-6">
+
+        <h3>{{ pelicula.title }}</h3>
+
+        <div class="row">
+
+            <div class="col">
+                <!--
+                Para implementar en el proyecto el tema del ranting de las estrellas he instalado el paquete
+                de esta forma en la consola he puesto npm i ng-starrating y luego me he ido al components.module.ts
+                y alli he puesto esto import { RatingModule } from 'ng-starrating'; y esto de este archivo lo he
+                cogido de la pagina web https://www.npmjs.com/package/ng-starrating que alli esta toda la documentacion
+                -->
+                <star-rating [value]="pelicula.vote_average" totalstars="10" checkedcolor="yellow" uncheckedcolor="grey" size="15px" readonly="false"></star-rating>
+            </div>
+
+            <div class="col text-white">
+                <!--Lo paso por la pipe number:'1.1-2' para que me ponga un numero entero y uno o dos decimales-->
+                {{ pelicula.vote_average | number:'1.1-2' }}
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col text-white">
+                {{ pelicula.overview }}
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <button class="btn btn-outline-info" (click)="onRegresar()">Regresar</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--Con el *ngIf="cast.length > 0 le digo que lo muestre si hay actores si no los hay no lo muestra"-->
+<div class="row mt-5 mb-5 animate__animated animate__fadeInDown" *ngIf="cast.length > 0">
+    <div class="col">
+        <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
+    </div>
+</div>

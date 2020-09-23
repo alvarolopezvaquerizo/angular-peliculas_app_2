@@ -1,0 +1,29 @@
+<div class="row">
+
+    <div class="col-md-3 mb-5 animate__animated animate__fadeInDown" *ngFor="let movie of movies">
+
+        <img [src]="movie.poster_path | poster" class="img-fluid poster" (click)="onMovieClick( movie )">
+
+        <div>
+            <h3>{{ movie.title }}</h3>
+            <div class="row">
+
+                <div class="col-10 text-white">
+                    <!--Para implementar en el proyecto el tema del ranting de las estrellas he instalado el paquete
+                    de esta forma en la consola he puesto npm i ng-starrating y luego me he ido al components.module.ts
+                    y alli he puesto esto import { RatingModule } from 'ng-starrating'; y esto de este archivo lo he
+                    cogido de la pagina web https://www.npmjs.com/package/ng-starrating que alli esta toda la documentacion-->
+                    <star-rating [value]="movie.vote_average" totalstars="10" checkedcolor="yellow" uncheckedcolor="grey" size="14px" readonly="false"></star-rating>
+                </div>
+                <div class="col-2 text-white">
+                    <!--Lo paso por la pipe number:'1.1-2' para decirle que quiero convertirlo en un numero
+                    entero con uno o dos decimales-->
+                    {{ movie.vote_average | number:'1.1-2' }}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
